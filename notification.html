@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications | MedCare</title>
+  <link rel="stylesheet" href="CSS/notification.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="dashboard.html" aria-label="MedCare home">
+        <span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+        <span>Med<span>Care</span></span>
+      </a>
+
+      <div class="nav-label">MENU</div>
+      <nav class="nav-menu" aria-label="Main navigation">
+        <a class="nav-link" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="appointments.html"><i class="fa-regular fa-calendar-check"></i><span>My Appointments</span></a>
+        <a class="nav-link" href="doctors.html"><i class="fa-solid fa-user-doctor"></i><span>Doctors</span></a>
+        <a class="nav-link" href="profile.html"><i class="fa-regular fa-user"></i><span>My Profile</span></a>
+        <a class="nav-link active" href="notifications.html" aria-current="page"><i class="fa-regular fa-bell"></i><span>Notifications</span><span class="nav-count" id="sidebarUnread">4</span></a>
+        <a class="nav-link" href="support.html"><i class="fa-regular fa-circle-question"></i><span>Help & Support</span></a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+          <strong>Need help?</strong>
+          <p>Our support team is here for you.</p>
+          <a href="support.html">Contact support <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <button class="logout-link" type="button" id="logoutButton"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log out</span></button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+        <div class="breadcrumb"><span>Pages</span><i class="fa-solid fa-chevron-right"></i><strong>Notifications</strong></div>
+        <div class="topbar-actions">
+          <button class="top-icon active-bell" type="button" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span class="top-dot"></span></button>
+          <button class="user-menu" type="button" id="profileButton">
+            <span class="user-avatar">GG</span>
+            <span class="user-copy"><strong>Godgift</strong><small>Patient</small></span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">STAY IN THE LOOP</p>
+            <h1>Notifications <span class="heading-count" id="headingUnread">4 new</span></h1>
+            <p class="subtitle">Keep track of appointment updates and important messages from MedCare.</p>
+          </div>
+          <button class="button button-outline" id="markAllRead"><i class="fa-solid fa-check-double"></i> Mark all as read</button>
+        </section>
+
+        <section class="summary-grid" aria-label="Notification summary">
+          <article class="summary-card">
+            <div class="summary-icon blue"><i class="fa-regular fa-bell"></i></div>
+            <div><p>Total notifications</p><strong id="totalCount">6</strong><span>All your updates in one place</span></div>
+          </article>
+          <article class="summary-card">
+            <div class="summary-icon orange"><i class="fa-solid fa-envelope"></i></div>
+            <div><p>Unread messages</p><strong id="unreadCount">4</strong><span>Items that need your attention</span></div>
+          </article>
+          <article class="summary-card">
+            <div class="summary-icon green"><i class="fa-solid fa-check"></i></div>
+            <div><p>Read notifications</p><strong id="readCount">2</strong><span>You've caught up on these</span></div>
+          </article>
+        </section>
+
+        <section class="notification-panel">
+          <div class="panel-toolbar">
+            <div class="filter-tabs" role="group" aria-label="Filter notifications">
+              <button class="filter-tab active" data-filter="all" type="button">All <span id="allTabCount">6</span></button>
+              <button class="filter-tab" data-filter="unread" type="button">Unread <span id="unreadTabCount">4</span></button>
+              <button class="filter-tab" data-filter="read" type="button">Read <span id="readTabCount">2</span></button>
+            </div>
+            <label class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="notificationSearch" type="search" placeholder="Search notifications..." aria-label="Search notifications"></label>
+          </div>
+
+          <div class="notification-list" id="notificationList" aria-live="polite"></div>
+          <div class="empty-state hidden" id="emptyState">
+            <div class="empty-icon"><i class="fa-regular fa-bell-slash"></i></div>
+            <h3>No notifications found</h3>
+            <p>Try another filter or search term.</p>
+            <button class="button button-outline" id="resetFilters">Clear filters</button>
+          </div>
+          <div class="panel-footer"><span id="resultsSummary">Showing 6 notifications</span><button class="text-button" id="clearRead">Clear read notifications</button></div>
+        </section>
+        <p class="demo-note"><i class="fa-solid fa-circle-info"></i> These are sample notifications for the website demo. They are stored in this browser only.</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Updated successfully</span></div>
+
+  <div class="confirm-backdrop hidden" id="confirmBackdrop">
+    <section class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="confirm-icon"><i class="fa-regular fa-trash-can"></i></div>
+      <h2 id="confirmTitle">Clear read notifications?</h2>
+      <p id="confirmText">This will remove all notifications you've already read from this browser.</p>
+      <div class="modal-actions"><button class="button button-outline" id="cancelConfirm">Cancel</button><button class="button button-danger" id="confirmAction">Clear notifications</button></div>
+    </section>
+  </div>
+
+  <script src="javascript/notification.js"></script>
+</body>
+</html>

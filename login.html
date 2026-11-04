@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign In | MedCare Hospital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+
+<body>
+    <main class="layout">
+        <section class="welcome">
+            <a class="brand light" href="login.html">
+                <span class="logo"><i class="fa-solid fa-heart-pulse"></i></span>MedCare<span class="dot">.</span></a>
+            <div class="welcome-copy"><span class="eyebrow">● YOUR HEALTH, OUR PRIORITY</span>
+                <h1>Healthcare that puts <span>you first.</span></h1>
+                <p>Manage your care with a simpler, more personal hospital experience.</p>
+                <div class="benefits">
+                    <div><i class="fa-regular fa-calendar-check"></i>
+                        <section><b>Appointments made easier</b><small>Keep your visits organised in one place.</small>
+                        </section>
+                    </div>
+                    <div><i class="fa-solid fa-user-doctor"></i>
+                        <section><b>Care that feels personal</b><small>Explore doctors and available services.</small>
+                        </section>
+                    </div>
+                    <div><i class="fa-solid fa-shield-heart"></i>
+                        <section><b>Your care, in view</b><small>Stay on top of your patient portal.</small></section>
+                    </div>
+                </div>
+            </div><small class="panel-foot"><i class="fa-solid fa-lock"></i> A calmer way to manage your
+                healthcare</small>
+        </section>
+        <section class="form-panel"><a class="brand mobile-brand" href="login.html"><span class="logo"><i
+                        class="fa-solid fa-heart-pulse"></i></span>MedCare<span class="dot">.</span></a>
+            <div class="form-wrap">
+                <div class="heading"><span class="heading-icon"><i class="fa-solid fa-hand"></i></span>
+                    <p class="overline">WELCOME BACK</p>
+                    <h2>Sign in to your account</h2>
+                    <p class="muted">Enter your details to continue to your patient portal.</p>
+                </div>
+                <form id="loginForm" novalidate>
+                    <div class="field"><label for="email">Email address</label>
+                        <div class="input-wrap"><i class="fa-regular fa-envelope input-icon"></i><input id="email"
+                                type="email" placeholder="you@example.com" autocomplete="email"><small class="error"
+                                id="emailError"></small></div>
+                    </div>
+                    <div class="field">
+                        <div class="label-row"><label for="password">Password</label><a href="#"
+                                id="forgotPassword">Forgot password?</a></div>
+                        <div class="input-wrap"><i class="fa-solid fa-lock input-icon"></i><input id="password"
+                                type="password" placeholder="Enter your password"
+                                autocomplete="current-password"><button type="button" id="togglePassword"
+                                aria-label="Show password"><i class="fa-regular fa-eye"></i></button><small
+                                class="error" id="passwordError"></small></div>
+                    </div>
+                    <div class="options"><label class="remember"><input id="rememberMe" type="checkbox"> Remember
+                            me</label><span><i class="fa-solid fa-shield-halved"></i> Demo portal</span></div>
+                    <div id="formNotice" class="notice" role="status" aria-live="polite"></div><button class="submit"
+                        id="submitBtn" type="submit">Sign in <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <div class="demo-note"><i class="fa-solid fa-circle-info"></i>
+                    <p><b>Student project demo</b><br>This page demonstrates a login interface. It does not authenticate
+                        users or protect real patient data.</p>
+                </div>
+                <p class="contact">Need help? <a href="support.html">Visit Help &amp; Support</a></p>
+            </div>
+            <footer><span>© 2026 MedCare Hospital</span><span><i class="fa-solid fa-heart-pulse"></i> Care starts
+                    here</span></footer>
+        </section>
+    </main>
+    <script src="javascript/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments | MedCare Hospital</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  >
+  <link rel="stylesheet" href="CSS/appointments.css">
+  <script src="javascript/appointments.js" defer></script>
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- Mobile overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="brand">
+        <span class="brand-icon">
+          <i class="fa-solid fa-plus"></i>
+        </span>
+
+        <span>
+          <strong>MedCare</strong>
+          <small>Hospital</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="dashboard.html" class="nav-link">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="appointments.html" class="nav-link active">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>My Appointments</span>
+        </a>
+
+        <a href="profile.html" class="nav-link">
+          <i class="fa-regular fa-user"></i>
+          <span>My Profile</span>
+        </a>
+
+        <a href="notifications.html" class="nav-link">
+          <i class="fa-regular fa-bell"></i>
+          <span>Notifications</span>
+        </a>
+
+        <a href="support.html" class="nav-link">
+          <i class="fa-regular fa-circle-question"></i>
+          <span>Help &amp; Support</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <i class="fa-solid fa-headset"></i>
+          <strong>Need help?</strong>
+          <p>Our support team is here for you.</p>
+          <a href="support.html">Contact support</a>
+        </div>
+
+        <a href="login.html" class="nav-link logout-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <label class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search doctors or specialties..."
+            aria-label="Search appointments"
+          >
+        </label>
+
+        <div class="topbar-right">
+          <button class="icon-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <div class="user-info">
+            <div class="avatar user-avatar">JD</div>
+            <div>
+              <strong>John Doe</strong>
+              <small>Patient</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE HEADING -->
+      <section class="page-heading">
+        <div class="heading-copy">
+          <div class="heading-icon">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+
+          <div>
+            <p class="eyebrow">PATIENT PORTAL</p>
+            <h1>My Appointments</h1>
+            <p class="page-description">
+              Manage your visits and keep track of your healthcare.
+            </p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="openBookingBtn">
+          <i class="fa-solid fa-plus"></i>
+          Book Appointment
+        </button>
+      </section>
+
+      <!-- STATISTICS -->
+      <section class="stats-grid" aria-label="Appointment statistics">
+        <article class="stat-card stat-blue">
+          <div class="stat-icon">
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+          <div>
+            <p>Total Appointments</p>
+            <h2 id="totalCount">0</h2>
+          </div>
+        </article>
+
+        <article class="stat-card stat-green">
+          <div class="stat-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <p>Upcoming</p>
+            <h2 id="upcomingCount">0</h2>
+          </div>
+        </article>
+
+        <article class="stat-card stat-orange">
+          <div class="stat-icon">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div>
+            <p>Pending</p>
+            <h2 id="pendingCount">0</h2>
+          </div>
+        </article>
+
+        <article class="stat-card stat-purple">
+          <div class="stat-icon">
+            <i class="fa-solid fa-check-double"></i>
+          </div>
+          <div>
+            <p>Completed</p>
+            <h2 id="completedCount">0</h2>
+          </div>
+        </article>
+      </section>
+
+      <!-- APPOINTMENTS -->
+      <section class="appointments-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Appointment History</h2>
+            <p>View and manage your scheduled visits.</p>
+          </div>
+
+          <label class="sort-control">
+            <span class="sr-only">Sort appointments</span>
+            <select id="sortSelect">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="Filter appointments">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+          <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+        </div>
+
+        <div class="appointments-list" id="appointmentsList">
+          <!-- Appointment cards are created by JavaScript -->
+        </div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <i class="fa-regular fa-calendar-xmark"></i>
+          <h3>No appointments found</h3>
+          <p>Try another filter or book a new appointment.</p>
+          <button class="btn btn-primary" id="emptyBookBtn">
+            Book an appointment
+          </button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <p>&copy; 2026 MedCare Hospital. Your health matters.</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- BOOKING MODAL -->
+  <div
+    class="modal"
+    id="bookingModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    hidden
+  >
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">MEDCARE PATIENT PORTAL</p>
+          <h2 id="modalTitle">Book an Appointment</h2>
+          <p>Choose a doctor and your preferred time.</p>
+        </div>
+
+        <button class="close-modal" id="closeBookingBtn" aria-label="Close form">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="bookingForm">
+        <label class="form-field">
+          <span>Doctor</span>
+          <select id="doctorSelect" required>
+            <option value="">Choose a doctor</option>
+            <option value="Dr. Sarah Smith|Cardiologist">Dr. Sarah Smith · Cardiologist</option>
+            <option value="Dr. James Johnson|General Physician">Dr. James Johnson · General Physician</option>
+            <option value="Dr. Emily Lee|Dermatologist">Dr. Emily Lee · Dermatologist</option>
+            <option value="Dr. David Andrew|Orthopedic Surgeon">Dr. David Andrew · Orthopedic Surgeon</option>
+            <option value="Dr. Michael Joseph|Neurologist">Dr. Michael Joseph · Neurologist</option>
+          </select>
+        </label>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Appointment date</span>
+            <input type="date" id="appointmentDate" required>
+          </label>
+
+          <label class="form-field">
+            <span>Appointment time</span>
+            <select id="appointmentTime" required>
+              <option value="">Choose a time</option>
+              <option value="09:00">09:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="14:00">02:00 PM</option>
+              <option value="15:00">03:00 PM</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Reason for visit</span>
+          <textarea
+            id="appointmentReason"
+            rows="3"
+            maxlength="300"
+            placeholder="Briefly describe your reason for visiting..."
+            required
+          ></textarea>
+        </label>
+
+        <p class="form-note">
+          <i class="fa-solid fa-circle-info"></i>
+          This demo does not contact a real doctor or reserve a hospital slot.
+        </p>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-light" id="cancelBookingBtn">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-calendar-check"></i>
+            Confirm Appointment
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- APPOINTMENT DETAILS MODAL -->
+  <div
+    class="modal"
+    id="detailsModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailsTitle"
+    hidden
+  >
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card details-card">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">APPOINTMENT INFORMATION</p>
+          <h2 id="detailsTitle">Appointment Details</h2>
+        </div>
+
+        <button class="close-modal" data-close-modal aria-label="Close details">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="appointmentDetails"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

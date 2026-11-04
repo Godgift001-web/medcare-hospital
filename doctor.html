@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Directory | MedCare</title>
+
+    <link rel="stylesheet" href="CSS/doctor.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="dashboard.html" class="brand">
+            <span class="brand-mark">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </span>
+            <span>Med<span>Care</span></span>
+        </a>
+
+        <div class="sidebar-label">MENU</div>
+
+        <nav class="nav-list">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-table-columns"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="appointments.html" class="nav-link">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>My Appointments</span>
+            </a>
+
+            <a href="doctors.html" class="nav-link active">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Doctors Directory</span>
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="notifications.html" class="nav-link">
+                <i class="fa-regular fa-bell"></i>
+                <span>Notifications</span>
+            </a>
+
+            <a href="support.html" class="nav-link">
+                <i class="fa-regular fa-circle-question"></i>
+                <span>Help & Support</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+                <span class="help-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </span>
+
+                <strong>Need assistance?</strong>
+
+                <p>Our support team is here to help.</p>
+
+                <a href="support.html">
+                    Contact support
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <a href="login.html" class="nav-link logout-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Log out</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="breadcrumb">
+                <span>Pages</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <strong>Doctors Directory</strong>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-button" onclick="window.location.href='notifications.html'">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <a href="profile.html" class="user-mini">
+                    <span class="mini-avatar">GG</span>
+
+                    <span class="user-mini-copy">
+                        <strong>Godgift</strong>
+                        <small>Patient</small>
+                    </span>
+                </a>
+
+            </div>
+
+        </header>
+
+        <section class="page-content">
+
+            <!-- PAGE INTRODUCTION -->
+            <div class="welcome-row">
+
+                <div>
+                    <p class="eyebrow">YOUR CARE, YOUR CHOICE</p>
+
+                    <h1>Find your doctor</h1>
+
+                    <p class="page-subtitle">
+                        Connect with trusted specialists and take the next step in your care.
+                    </p>
+                </div>
+
+                <div class="doctor-count">
+                    <span class="count-icon">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </span>
+
+                    <span>
+                        <strong id="doctorCount">8 doctors</strong>
+                        <small>in our directory</small>
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- SEARCH AND FILTERS -->
+            <section class="search-panel">
+
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search by doctor, specialty, or keyword..."
+                    >
+
+                    <button id="clearSearch" hidden>
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="filter-field">
+                    <label for="specialtyFilter">Specialty</label>
+
+                    <select id="specialtyFilter">
+                        <option value="all">All specialties</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Dermatology">Dermatology</option>
+                        <option value="Family Medicine">Family Medicine</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Obstetrics & Gynaecology">Obstetrics & Gynaecology</option>
+                        <option value="Paediatrics">Paediatrics</option>
+                        <option value="Psychology">Psychology</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="sortFilter">Sort by</label>
+
+                    <select id="sortFilter">
+                        <option value="recommended">Recommended</option>
+                        <option value="rating">Highest rated</option>
+                        <option value="experience">Most experienced</option>
+                        <option value="fee-low">Lowest fee</option>
+                    </select>
+                </div>
+
+            </section>
+
+            <!-- RESULTS -->
+            <div class="results-toolbar">
+
+                <div>
+                    <h2>Available specialists</h2>
+                    <p id="resultsText">Showing all doctors</p>
+                </div>
+
+                <div class="availability-filter">
+
+                    <button class="chip active" data-availability="all">
+                        All doctors
+                    </button>
+
+                    <button class="chip" data-availability="today">
+                        <span class="available-dot"></span>
+                        Available today
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- DOCTOR CARDS WILL APPEAR HERE -->
+            <div class="doctor-grid" id="doctorGrid"></div>
+
+            <!-- BOTTOM BANNER -->
+            <section class="bottom-banner">
+
+                <div class="banner-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+
+                <div>
+                    <h3>Not sure which specialist you need?</h3>
+
+                    <p>
+                        Start with a general consultation and get guidance on the right care for you.
+                    </p>
+                </div>
+
+                <button class="btn btn-light" id="generalConsultationBtn">
+                    Explore family medicine
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </section>
+
+            <footer class="page-footer">
+                <span>© 2026 MedCare. All rights reserved.</span>
+
+                <span>
+                    Care that puts you first
+                    <i class="fa-solid fa-heart"></i>
+                </span>
+            </footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- DOCTOR DETAILS MODAL -->
+<div class="modal-backdrop" id="doctorModal">
+
+    <section class="modal">
+
+        <button class="modal-close" data-close-modal>
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div id="doctorModalContent"></div>
+
+    </section>
+
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-backdrop" id="bookingModal">
+
+    <section class="modal booking-modal">
+
+        <button class="modal-close" data-close-modal>
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-heading-icon">
+            <i class="fa-regular fa-calendar-check"></i>
+        </div>
+
+        <p class="eyebrow">APPOINTMENT REQUEST</p>
+
+        <h2>Book a consultation</h2>
+
+        <p class="modal-subtitle" id="bookingDoctorName"></p>
+
+        <form id="bookingForm">
+
+            <input type="hidden" id="bookingDoctorId">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="patientName">Your full name</label>
+                    <input type="text" id="patientName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="patientEmail">Email address</label>
+                    <input type="email" id="patientEmail" required>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="appointmentDate">Preferred date</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="appointmentTime">Preferred time</label>
+
+                    <select id="appointmentTime" required>
+                        <option value="">Select a time</option>
+                        <option>09:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:30 AM</option>
+                        <option>01:00 PM</option>
+                        <option>02:30 PM</option>
+                        <option>04:00 PM</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="visitReason">Reason for visit (optional)</label>
+                <textarea id="visitReason" rows="3"></textarea>
+            </div>
+
+            <div class="demo-notice">
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span>
+                    This is a demo form. It saves your request in this browser only.
+                    It does not confirm a real hospital appointment.
+                </span>
+            </div>
+
+            <div class="modal-actions">
+
+                <button type="button" class="btn btn-outline" data-close-modal>
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Submit request
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</div>
+
+<!-- TOAST MESSAGE -->
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage"></span>
+</div>
+
+<script src="javascript/doctor.js" defer></script>
+
+</body>
+</html>

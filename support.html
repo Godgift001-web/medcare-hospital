@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support | MedCare</title>
+
+    <link rel="stylesheet" href="CSS/support.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h2>MedCare</h2>
+            </div>
+
+            <nav>
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="appointments.html">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>My Appointments</span>
+                </a>
+
+                <a href="profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="notifications.html">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+
+                <a href="support.html" class="active">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Help & Support</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="login.html" id="logoutButton">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h2>Help & Support</h2>
+                    <p>We're here to help you.</p>
+                </div>
+            </header>
+
+            <section class="support-content">
+
+                <div class="welcome-card">
+                    <h1>How can we help you?</h1>
+                    <p>Find answers to your questions or contact our support team.</p>
+                </div>
+
+                <div class="support-options">
+
+                    <div class="support-card">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h3>Appointments</h3>
+                        <p>Need help booking or managing your appointments?</p>
+                        <a href="appointments.html">View Appointments</a>
+                    </div>
+
+                    <div class="support-card">
+                        <i class="fa-solid fa-user"></i>
+                        <h3>Account Support</h3>
+                        <p>Having trouble with your profile or account information?</p>
+                        <a href="profile.html">Manage Profile</a>
+                    </div>
+
+                    <div class="support-card">
+                        <i class="fa-solid fa-bell"></i>
+                        <h3>Notifications</h3>
+                        <p>Check updates and important information about your account.</p>
+                        <a href="notification.html">View Notifications</a>
+                    </div>
+
+                </div>
+
+                <div class="contact-section">
+                    <h2>Contact Support</h2>
+                    <p>Send us a message if you need further assistance.</p>
+
+                    <form id="supportForm">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="What do you need help with?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Describe your issue..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Send Message
+                        </button>
+
+                    </form>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="javascript/support.js"></script>
+
+</body>
+</html>

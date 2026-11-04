@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MedCare | Patient Dashboard</title>
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="CSS/dashboard.css">
+
+    <!-- JavaScript -->
+    <script src="javascript/dashboard.js" defer></script>
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-hospital"></i>
+
+                <div class="logo-text">
+                    <h1>MedCare</h1>
+                    <span>Hospital</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <ul>
+                    <li>
+                        <a href="#" class="active" aria-current="page">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="appointments.html">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>My Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html"> <i class="fa-solid fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notification.html">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#support">
+                            <i class="fa-solid fa-circle-question"></i>
+                            <span>Help &amp; Support</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </aside>
+
+        <!-- Mobile overlay -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Main content -->
+        <section class="main-content">
+
+            <!-- Header -->
+            <header class="header">
+
+                <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation menu"
+                    aria-controls="sidebar" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="header-text">
+                    <h1>Hello, John 👋</h1>
+                    <p>We're glad to have you back</p>
+                </div>
+
+            </header>
+
+            <!-- Appointment CTA -->
+            <section class="appointment-cta">
+
+                <div class="cta-content">
+
+                    <div class="cta-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+
+                    <h2>Book Appointment</h2>
+
+                    <p>
+                        Schedule your next appointment with ease.
+                    </p>
+
+                </div>
+
+                <button class="btn" type="button" onclick="window.location.href='appointments.html'">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    Book Appointment
+                </button>
+            </section>
+
+            <!-- Appointments card -->
+            <section class="appointments-card" id="appointments">
+
+                <div class="card-header">
+                    <h2>My Appointments</h2>
+                    <a href="appointments.html">View All</a>
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Doctor</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Dr. Smith</td>
+                                <td>15 Jun 2026</td>
+                                <td>10:00 AM</td>
+                                <td>
+                                    <span class="status confirmed">
+                                        Confirmed
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn-small" type="button">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dr. Johnson</td>
+                                <td>20 Jun 2026</td>
+                                <td>02:00 PM</td>
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn-small" type="button">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dr. Lee</td>
+                                <td>25 Jun 2026</td>
+                                <td>11:30 AM</td>
+                                <td>
+                                    <span class="status cancelled">
+                                        Cancelled
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn-small" type="button">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dr. Andrew</td>
+                                <td>28 Jun 2026</td>
+                                <td>09:30 AM</td>
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn-small" type="button">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dr. Joseph</td>
+                                <td>30 Jun 2026</td>
+                                <td>12:00 PM</td>
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn-small" type="button">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

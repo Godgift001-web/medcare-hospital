@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | MedCare Hospital</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  >
+  <link rel="stylesheet" href="CSS/profile.css">
+  <script src="javascript/profile.js" defer></script>
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="brand">
+        <span class="brand-icon">
+          <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>
+          <strong>MedCare</strong>
+          <small>Hospital</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="dashboard.html" class="nav-link">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="appointments.html" class="nav-link">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>My Appointments</span>
+        </a>
+
+        <a href="profile.html" class="nav-link active" aria-current="page">
+          <i class="fa-regular fa-user"></i>
+          <span>My Profile</span>
+        </a>
+
+        <a href="notifications.html" class="nav-link">
+          <i class="fa-regular fa-bell"></i>
+          <span>Notifications</span>
+          <span class="nav-badge">3</span>
+        </a>
+
+        <a href="support.html" class="nav-link">
+          <i class="fa-regular fa-circle-question"></i>
+          <span>Help &amp; Support</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <i class="fa-solid fa-headset"></i>
+          <strong>Need help?</strong>
+          <p>Our support team is here for you.</p>
+          <a href="support.html">Contact support <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <a href="login.html" class="nav-link logout-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <label class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search doctors, specialties..."
+            aria-label="Search"
+          >
+        </label>
+
+        <div class="topbar-right">
+          <a class="icon-btn" href="notifications.html" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </a>
+
+          <div class="user-info">
+            <div class="avatar" id="headerAvatar">JD</div>
+            <span id="headerName">John Doe</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE HEADING -->
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">ACCOUNT SETTINGS</p>
+          <h1>My Profile</h1>
+          <p class="page-description">
+            Manage your personal information and healthcare details.
+          </p>
+        </div>
+
+        <span class="secure-label">
+          <i class="fa-solid fa-shield-halved"></i>
+          Your profile
+        </span>
+      </section>
+
+      <!-- PROFILE BANNER -->
+      <section class="profile-banner">
+        <div class="profile-identity">
+          <div class="profile-photo-wrap">
+            <div class="profile-avatar" id="profileAvatar">JD</div>
+
+            <label class="photo-upload" for="photoInput" title="Change profile photo">
+              <i class="fa-solid fa-camera"></i>
+            </label>
+            <input type="file" id="photoInput" accept="image/*" hidden>
+          </div>
+
+          <div class="identity-details">
+            <div class="identity-name">
+              <h2 id="profileName">John Doe</h2>
+              <span class="patient-badge">
+                <i class="fa-solid fa-circle-check"></i>
+                Patient
+              </span>
+            </div>
+
+            <p><i class="fa-regular fa-envelope"></i> <span id="profileEmail">john.doe@example.com</span></p>
+            <p><i class="fa-solid fa-phone"></i> <span id="profilePhone">+234 801 234 5678</span></p>
+            <p><i class="fa-regular fa-calendar"></i> Member since January 2026</p>
+          </div>
+        </div>
+
+        <div class="banner-message">
+          <div class="pulse-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <p>Your health<br><strong>is our priority</strong></p>
+          <i class="fa-regular fa-heart heart-icon"></i>
+        </div>
+      </section>
+
+      <!-- PROFILE GRID -->
+      <div class="profile-layout">
+
+        <!-- PROFILE FORM -->
+        <section class="profile-card">
+          <div class="card-heading">
+            <div>
+              <h2>Profile Information</h2>
+              <p>Keep your information accurate and up to date.</p>
+            </div>
+
+            <span class="saved-indicator" id="savedIndicator">
+              <i class="fa-solid fa-check"></i> Saved
+            </span>
+          </div>
+
+          <!-- TABS -->
+          <div class="profile-tabs" role="tablist" aria-label="Profile sections">
+            <button class="tab-btn active" data-tab="personal" role="tab" aria-selected="true">
+              Personal
+            </button>
+            <button class="tab-btn" data-tab="contact" role="tab" aria-selected="false">
+              Contact
+            </button>
+            <button class="tab-btn" data-tab="medical" role="tab" aria-selected="false">
+              Medical
+            </button>
+            <button class="tab-btn" data-tab="security" role="tab" aria-selected="false">
+              Security
+            </button>
+          </div>
+
+          <form id="profileForm">
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="tab-panel" data-panel="personal" role="tabpanel">
+              <div class="section-intro">
+                <h3>Personal Information</h3>
+                <p>Basic details used to identify your patient account.</p>
+              </div>
+
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Full name <b>*</b></span>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    autocomplete="name"
+                    minlength="2"
+                    maxlength="80"
+                    required
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>Date of birth <b>*</b></span>
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    autocomplete="bday"
+                    required
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>Gender</span>
+                  <select id="gender" name="gender">
+                    <option value="">Prefer not to say</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Blood group</span>
+                  <select id="bloodGroup" name="bloodGroup">
+                    <option value="">Unknown / not recorded</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Height (cm)</span>
+                  <input
+                    type="number"
+                    id="height"
+                    name="height"
+                    min="30"
+                    max="280"
+                    placeholder="e.g. 175"
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>Weight (kg)</span>
+                  <input
+                    type="number"
+                    id="weight"
+                    name="weight"
+                    min="1"
+                    max="500"
+                    step="0.1"
+                    placeholder="e.g. 70"
+                  >
+                </label>
+              </div>
+            </div>
+
+            <!-- CONTACT INFORMATION -->
+            <div class="tab-panel" data-panel="contact" role="tabpanel" hidden>
+              <div class="section-intro">
+                <h3>Contact Information</h3>
+                <p>How the hospital can reach you.</p>
+              </div>
+
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Email address <b>*</b></span>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    maxlength="120"
+                    required
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>Phone number <b>*</b></span>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    maxlength="25"
+                    required
+                  >
+                </label>
+
+                <label class="form-field full-width">
+                  <span>Residential address</span>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    autocomplete="street-address"
+                    maxlength="180"
+                    placeholder="Enter your address"
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>City</span>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    autocomplete="address-level2"
+                    maxlength="80"
+                  >
+                </label>
+
+                <label class="form-field">
+                  <span>State</span>
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    autocomplete="address-level1"
+                    maxlength="80"
+                  >
+                </label>
+              </div>
+
+              <div class="subsection">
+                <h3>Emergency Contact</h3>
+
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Contact name</span>
+                    <input
+                      type="text"
+                      id="emergencyName"
+                      name="emergencyName"
+                      maxlength="80"
+                    >
+                  </label>
+
+                  <label class="form-field">
+                    <span>Relationship</span>
+                    <input
+                      type="text"
+                      id="emergencyRelationship"
+                      name="emergencyRelationship"
+                      maxlength="50"
+                      placeholder="e.g. Parent"
+                    >
+                  </label>
+
+                  <label class="form-field full-width">
+                    <span>Emergency phone</span>
+                    <input
+                      type="tel"
+                      id="emergencyPhone"
+                      name="emergencyPhone"
+                      maxlength="25"
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- MEDICAL INFORMATION -->
+            <div class="tab-panel" data-panel="medical" role="tabpanel" hidden>
+              <div class="section-intro">
+                <h3>Medical Information</h3>
+                <p>Optional information to discuss with your healthcare provider.</p>
+              </div>
+
+              <div class="medical-notice">
+                <i class="fa-solid fa-shield-heart"></i>
+                <p>
+                  Keep this information accurate. These fields are for this
+                  demo profile only and do not replace your official medical record.
+                </p>
+              </div>
+
+              <label class="form-field">
+                <span>Known allergies</span>
+                <textarea
+                  id="allergies"
+                  name="allergies"
+                  rows="3"
+                  maxlength="1000"
+                  placeholder="List known allergies, or leave blank if unknown."
+                ></textarea>
+              </label>
+
+              <label class="form-field">
+                <span>Current medications</span>
+                <textarea
+                  id="medications"
+                  name="medications"
+                  rows="3"
+                  maxlength="1000"
+                  placeholder="List current medications, if applicable."
+                ></textarea>
+              </label>
+
+              <label class="form-field">
+                <span>Medical conditions</span>
+                <textarea
+                  id="conditions"
+                  name="conditions"
+                  rows="3"
+                  maxlength="1000"
+                  placeholder="List relevant medical conditions, if applicable."
+                ></textarea>
+              </label>
+            </div>
+
+            <!-- SECURITY -->
+            <div class="tab-panel" data-panel="security" role="tabpanel" hidden>
+              <div class="section-intro">
+                <h3>Account Security</h3>
+                <p>Review your account security options.</p>
+              </div>
+
+              <div class="security-card">
+                <div class="security-icon">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                  <h4>Password</h4>
+                  <p>For your safety, change your password through the secure account system.</p>
+                </div>
+              </div>
+
+              <a href="change-password.html" class="btn btn-secondary">
+                <i class="fa-solid fa-key"></i>
+                Change Password
+              </a>
+
+              <div class="security-card security-info">
+                <div class="security-icon">
+                  <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div>
+                  <h4>Account protection</h4>
+                  <p>
+                    Password changes and login protection must be handled
+                    by the authentication backend.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORM ACTIONS -->
+            <div class="form-actions" id="formActions">
+              <button type="button" class="btn btn-light" id="resetBtn">
+                Reset Changes
+              </button>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-regular fa-floppy-disk"></i>
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <aside class="profile-side">
+
+          <section class="side-card">
+            <div class="side-card-heading">
+              <div>
+                <h2>Profile Overview</h2>
+                <p>Your basic details at a glance.</p>
+              </div>
+
+              <button class="edit-link" id="editProfileBtn">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-regular fa-user"></i>
+              <span>Full name</span>
+              <strong id="overviewName">John Doe</strong>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Date of birth</span>
+              <strong id="overviewDob">Not provided</strong>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-solid fa-venus-mars"></i>
+              <span>Gender</span>
+              <strong id="overviewGender">Not provided</strong>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-solid fa-droplet"></i>
+              <span>Blood group</span>
+              <strong id="overviewBlood">Not recorded</strong>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-solid fa-ruler-vertical"></i>
+              <span>Height</span>
+              <strong id="overviewHeight">Not provided</strong>
+            </div>
+
+            <div class="overview-row">
+              <i class="fa-solid fa-weight-scale"></i>
+              <span>Weight</span>
+              <strong id="overviewWeight">Not provided</strong>
+            </div>
+          </section>
+
+          <section class="side-card">
+            <div class="side-card-heading">
+              <div>
+                <h2>Quick Actions</h2>
+                <p>Shortcuts to other features.</p>
+              </div>
+            </div>
+
+            <a href="change-password.html" class="quick-action">
+              <span class="action-icon">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <span>Change Password</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+
+            <a href="appointments.html" class="quick-action">
+              <span class="action-icon">
+                <i class="fa-regular fa-calendar-check"></i>
+              </span>
+              <span>My Appointments</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+
+            <a href="notifications.html" class="quick-action">
+              <span class="action-icon">
+                <i class="fa-regular fa-bell"></i>
+              </span>
+              <span>Manage Notifications</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </section>
+
+          <section class="privacy-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <h3>Protect your information</h3>
+              <p>
+                Only enter information you are comfortable storing in this demo.
+                Sensitive information requires secure server-side storage.
+              </p>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="page-footer">
+        <p>&copy; 2026 MedCare Hospital. Your health matters.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
