@@ -48,13 +48,13 @@ const profileFields = [
 ];
 
 const defaultProfile = {
-  fullName: "John Doe",
+  fullName: "Shajiofisi Godgift",
   dateOfBirth: "",
   gender: "",
   bloodGroup: "",
   height: "",
   weight: "",
-  email: "john.doe@example.com",
+  email: "shajiofisigift@gmail.com",
   phone: "+234 801 234 5678",
   address: "",
   city: "",
@@ -89,7 +89,7 @@ function getInitials(name) {
     .slice(0, 2)
     .map(part => part[0] || "")
     .join("")
-    .toUpperCase() || "JD";
+    .toUpperCase() || "GS";
 }
 
 function formatDate(dateString) {
